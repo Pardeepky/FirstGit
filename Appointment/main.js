@@ -14,14 +14,13 @@ function register(event) {
     showNewuseronScreen(obj);
 }
 window.addEventListener("DOMContentLoaded", () => {
-    const localStorageobj = localStorage;
-    const localStoragekeys = Object.keys(localStorageobj)
-    for (var i = 0; i < localStoragekeys.length; i++) {
-        const key = localStoragekeys[i]
-        const userDetailsString = localStorageobj[key];
-        const userDetailsObj = JSON.parse(userDetailsString)
-        showNewuseronScreen(userDetailsObj)
-    }
+    axios.get("https://crudcrud.com/api/51538406455b4ec5a27bad9aa578b566/user")
+  .then((response)=>{
+    console.log(response)
+    for(var i=0;i<response.data.length;i++){
+      showNewuseronScreen(response.data[i])}
+  })
+  .catch((err)=>{console.log(err)})
 })
 function showNewuseronScreen(user) {
     document.getElementById('mail').value = '';
