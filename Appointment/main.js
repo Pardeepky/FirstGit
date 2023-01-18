@@ -8,7 +8,9 @@ function register(event) {
         mail,
         number
     }
-    localStorage.setItem(obj.mail, JSON.stringify(obj))
+    axios.post("https://crudcrud.com/api/51538406455b4ec5a27bad9aa578b566/user", obj).then((response)=>{
+        console.log(response)}).catch((err)=>{console.log(err)})
+    // localStorage.setItem(obj.mail, JSON.stringify(obj))
     showNewuseronScreen(obj);
 }
 window.addEventListener("DOMContentLoaded", () => {
